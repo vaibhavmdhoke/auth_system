@@ -9,7 +9,7 @@ class UserSession < ApplicationRecord
   def authenticate_user
     user = User.authenticate(email, password)
     return false if user.nil?
-    debugger
+
     destroy_session(user) if user.user_session.present?
     self.user_id = user.id
   end

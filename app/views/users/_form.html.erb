@@ -17,14 +17,24 @@
   </div>
 
   <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
     <%= form.label :password %>
     <%= form.text_field :password %>
   </div>
 
   <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.label :password_confirmation %>
+    <%= form.text_field :password_confirmation %>
   </div>
+
+   <div class="field">
+      <%= form.label :accept_terms_of_service %>
+      <%= form.check_box :terms_of_service %>
+    </div>
 
   <div class="actions">
     <%= form.submit %>
