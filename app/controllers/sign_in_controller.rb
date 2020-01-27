@@ -10,7 +10,7 @@ class SignInController < ApplicationController
 
     respond_to do |format|
       if @user_session.save
-        format.html { redirect_to @user_session, notice: 'Session was successfully created.' }
+        format.html { redirect_to @user_session, notice: 'Login Successful.' }
         format.json { render :show, status: :created, location: @user_session }
       else
         format.html { render :new }
@@ -26,6 +26,6 @@ class SignInController < ApplicationController
   private
 
   def sign_in_params
-    params.require(:user_session).permit(:password, :email, :password_confirmation, :terms_of_service)
+    params.require(:user_session).permit(:password, :email, :remember_me)
   end
 end
