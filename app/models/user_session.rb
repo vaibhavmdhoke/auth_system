@@ -2,13 +2,17 @@ class UserSession < ApplicationRecord
   belongs_to :user
   before_validation :authenticate_user
   attr_accessor :email, :password, :remember_me
-  before_save :compute_session_expiry
+  before_save :compute_session_expiry, :generate_remember_token
+
+  def expired?
+    Time.now.utc >= self.expires_at
+  end
 
   private
 
   def authenticate_user
     @user = User.authenticate(email, password)
-    return false if @user.nil?
+    return false unless @user.present?
 
     destroy_session if @user.user_session.present?
 
@@ -26,6 +30,10 @@ class UserSession < ApplicationRecord
 
   def set_user_id
     self.user_id = @user.id
+  end
+
+  def generate_remember_token
+    self.remember_digest = SecureRandom.urlsafe_base64
   end
 
   # Destroys previous session

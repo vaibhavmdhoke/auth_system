@@ -10,6 +10,9 @@
   </head>
 
   <body>
+    <% if authenticated? %>
+      <%= button_to 'LogOut', user_session_path, method: :delete%>
+    <% end  %>
     <%= yield %>
   </body>
 </html>

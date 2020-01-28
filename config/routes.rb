@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :user_sessions
-  resources :users
+  resources :users, only: [:show, :new, :create]
 
   root 'sign_in#new'
   post 'sign_in' => 'sign_in#create'

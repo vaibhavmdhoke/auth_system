@@ -18,12 +18,10 @@ class User < ApplicationRecord
     user.authenticate
   end
 
-
   def set_password_digest
     password = Digest::SHA2.hexdigest(self.password)
     self.password_digest = password
   end
-
 
   def authenticate
     return self if Digest::SHA2.hexdigest(self.password) == self.password_digest

@@ -56,19 +56,22 @@ class UserSessionsController < ApplicationController
   def destroy
     @user_session.destroy
     respond_to do |format|
-      format.html { redirect_to user_sessions_url, notice: 'User session was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'User has successfully logged out.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user_session
-      @user_session = UserSession.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user_session
+    user = authenticated?
+    @user_session = user.user_session
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_session_params
-      params.require(:user_session).permit(:expires_at, :user_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_session_params
+    params.require(:user_session).permit(:expires_at, :user_id)
+  end
+
+
 end

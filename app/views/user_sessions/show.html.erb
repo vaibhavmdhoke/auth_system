@@ -1,14 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Expires at:</strong>
+  <strong>Your Session will Expires at:</strong>
   <%= @user_session.expires_at %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @user_session.user %>
-</p>
-
-<%= link_to 'Edit', edit_user_session_path(@user_session) %> |
-<%= link_to 'Back', user_sessions_path %>
+<%= link_to 'User', user_path(@user_session.user_id)%>
