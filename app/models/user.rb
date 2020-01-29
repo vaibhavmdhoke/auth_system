@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_one :user_session
   validates :password, confirmation: true
   validates :terms_of_service, acceptance: true
-  validates :email, :terms_of_service, presence: true
+  validates :email, :password, :password_confirmation, :terms_of_service, presence: true
   validates :email, uniqueness: true
 
   before_validation :set_password_digest

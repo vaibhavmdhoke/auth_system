@@ -8,17 +8,11 @@ class SignInController < ApplicationController
 
   def create
     @user_session = UserSession.new(sign_in_params)
-
-    respond_to do |format|
       if @user_session.save
         remember(@user_session)
-
-        format.html { redirect_to @user_session, notice: 'Login Successful.' }
-        format.json { render :show, status: :created, location: @user_session }
+        redirect_to @user_session, notice: 'Login Successful.'
       else
-        format.html { redirect_to root_path, notice: 'Username/Password Mismatch' }
-        format.json { render json: @user_session.errors, status: :unprocessable_entity }
-      end
+        redirect_to root_path, notice: 'Username/Password Mismatch'
     end
   end
 
