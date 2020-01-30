@@ -1,27 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version: ruby-2.3.1
 
-Things you may want to cover:
+* System dependencies: postgres, 
+                       bundle install # for installing gems
 
-* Ruby version
+* Database creation: rake db:create
 
-* System dependencies
+* Database migrations: rake db:migrate
 
-* Configuration
+* How to run the test suite: rake test
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 Build an Authentication application using only Ruby and Ruby on Rails.
 Please do not use Devise or any other gems/libraries.
